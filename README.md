@@ -2,7 +2,7 @@
 Using 28 principle components provided in the kaggle dataset, and provided fraud labels.
 
 **Model**
-Multilayer-perceptron (two hidden layers of dimension 80, and ReLU activation) approach, achieving >99% accuracy, with 70/30% test-train split. 
+Multilayer-perceptron (two hidden layers of dimension 80, and ReLU activation), achieving >99% accuracy, with 70/30% test-train split. 
 
 **Dataset**
 https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud/data. 
