@@ -1,4 +1,5 @@
 **Credit card fraud detection**
+Vew
 
 **Model**
 
@@ -6,8 +7,10 @@ Credit card fraud detection, with Multilayer-perceptron (two hidden layers of di
 
 **Dataset**
 https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud/data. 
-For next steps, I will consider Time and Amount transaction data, and perform grid-search for hyperparameters - hidden layer size, network depth, batch size.
 
 **Prerequisites**
-'''
-pip install pytorch
+```bash
+pip install torch
+
+****Future contributions
+Consider Time and Amount transaction data, and perform hyperparameter grid-search (hidden layer size, network depth, batch size).
