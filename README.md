@@ -10,7 +10,7 @@ https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud/data.
 **Prerequisites**
 ```bash
 pip install torch
-'''
+```
 
 Future Contributions
 Consider Time and Amount transaction data, and perform hyperparameter grid-search (hidden layer size, network depth, batch size).
