@@ -11,6 +11,10 @@ The dataset consists of 284,807 transactions. Each entry includes 28 PCA-transfo
 Multilayer-perceptron (two hidden layers of dimension 80, and ReLU activation).
 Dropout layers used between layers to randomly deactivate neurons during training, preventing the model from becoming too reliant on specific feature combinations. This is useful because fraudulent patterns are sparse and subtle. We used L2 regularization (via the weight_decay parameter in the Adam optimizer) to penalize large weights and encourage the model to generalize better, helping mitigate overfitting to the dominant class (non-fraud).
 
+## Results
+
+<pre> ``` Classification Report: precision recall f1-score support Not Fraud 0.9997 0.9998 0.9997 85307 Fraud 0.8485 0.8235 0.8358 136 accuracy 0.9995 85443 macro avg 0.9241 0.9116 0.9178 85443 weighted avg 0.9995 0.9995 0.9995 85443 ``` </pre>
+
 ## Prerequisites
 
 ```bash
