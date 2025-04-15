@@ -6,8 +6,9 @@ from torch.utils.data import DataLoader, Dataset
 from tqdm import tqdm
 import pandas as pd
 import matplotlib.pyplot as plt
-from autoencoder import MLP
+from mlp import MLP
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report
 
 
 batch_size = 64
@@ -61,29 +62,22 @@ def train_one_epoch(train_dataloader, device, optimizer, model, loss):
 
 
 def evaluate(test_dataloader, model, device):
-
-    import pdb; pdb.set_trace()
-
     model.eval()
-    total_loss = 0
-    correct = 0
-    total = 0
+    all_preds = []
+    all_targets = []
 
     with torch.no_grad():
         for inputs, targets in tqdm(test_dataloader):
-
             inputs, targets = inputs.to(device), targets.to(device)
             outputs = model(inputs)
-
             _, predicted_labels = torch.max(outputs, 1)
-            correct += (predicted_labels == targets).sum().item()
-            total += targets.size(0)
 
-        avg_loss = total_loss / total
-        accuracy = correct / total
+            all_preds.extend(predicted_labels.cpu().numpy())
+            all_targets.extend(targets.cpu().numpy())
 
-    return {'loss': avg_loss, 'accuracy': accuracy}
-
+    report = classification_report(all_targets, all_preds, target_names=["Not Fraud", "Fraud"], digits=4)
+    print("\nClassification Report:\n")
+    print(report)
 
 
 def main():
@@ -92,7 +86,7 @@ def main():
     device = torch.device('cpu')
     model = mlp.to(device)
 
-    credit_df = pd.read_csv("creditcard.csv")
+    credit_df = pd.read_csv("../creditcard.csv")
     data_df = credit_df.drop(columns=['Time','Amount','Class'])
     class_df = credit_df['Class']
 
@@ -104,8 +98,6 @@ def main():
     y_train = torch.tensor(y_train.values, dtype=torch.long)
     y_test = torch.tensor(y_test.values, dtype=torch.long)
 
-    # data = torch.tensor(credit_df.values)
-    # labels = torch.tensor(credit_df['Class'])
 
     train_dataset = MyDataset(X_train, y_train)
     test_dataset = MyDataset(X_test, y_test)
@@ -118,7 +110,8 @@ def main():
     # set model to training mode, and select desired optimizer #
     mlp.train()
     epoch_loss = 0
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.001) 
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.0001, weight_decay=1e-5)
+
     # training loop #
 
     for epoch in range(num_epochs):
@@ -126,7 +119,7 @@ def main():
 
     # Evaluation
     result_dict = evaluate(test_dataloader, model, device)
-    print(f"accuracy: {result_dict['accuracy']}")
+    # print(f"accuracy: {result_dict['accuracy']}")
 
     # for batch_idx, (inputs, targets) in enumerate(tqdm(train_dataloader)):
 
