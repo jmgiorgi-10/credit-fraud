@@ -13,7 +13,15 @@ Dropout layers used between layers to randomly deactivate neurons during trainin
 
 ## Results
 
-<pre> ``` Classification Report: precision recall f1-score support Not Fraud 0.9997 0.9998 0.9997 85307 Fraud 0.8485 0.8235 0.8358 136 accuracy 0.9995 85443 macro avg 0.9241 0.9116 0.9178 85443 weighted avg 0.9995 0.9995 0.9995 85443 ``` </pre>
+### 📋 Classification Report
+
+| Class      | Precision | Recall | F1-score | Support |
+|------------|-----------|--------|----------|---------|
+| Not Fraud  | 0.9997    | 0.9998 | 0.9997   | 85,307  |
+| Fraud      | 0.8485    | 0.8235 | 0.8358   |   136   |
+| **Accuracy** |           |        | **0.9995** | 85,443  |
+| **Macro Avg** | 0.9241    | 0.9116 | 0.9178   | 85,443  |
+| **Weighted Avg** | 0.9995 | 0.9995 |
 
 ## Prerequisites
 
