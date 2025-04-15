@@ -13,8 +13,6 @@ Dropout layers used between layers to randomly deactivate neurons during trainin
 
 ## Results
 
-### 📋 Classification Report
-
 | Class      | Precision | Recall | F1-score | Support |
 |------------|-----------|--------|----------|---------|
 | Not Fraud  | 0.9997    | 0.9998 | 0.9997   | 85,307  |
