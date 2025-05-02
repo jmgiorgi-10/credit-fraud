@@ -9,7 +9,7 @@ The dataset consists of 284,807 transactions. Each entry includes 28 PCA-transfo
 ## Model
 
 Multilayer-perceptron (two hidden layers of dimension 80, and ReLU activation).
-Dropout layers used between layers to randomly deactivate neurons during training, preventing the model from becoming too reliant on specific feature combinations. This is useful because fraudulent patterns are sparse and subtle. We used L2 regularization (via the weight_decay parameter in the Adam optimizer) to penalize large weights and encourage the model to generalize better, helping mitigate overfitting to the dominant class (non-fraud).
+Dropout layers used between layers to randomly deactivate neurons during training, preventing the model from becoming too reliant on specific feature combinations. This is useful because fraudulent patterns are sparse and so it prevents overfitting to the training set. In a similar light, we also used L2 regularization (via the weight_decay parameter in the Adam optimizer) to penalize large weights and encourage the model to generalize better.
 
 ## Results
 
